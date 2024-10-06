@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Previsão do Tempo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container-app">
+  <img src="../../assets/imagem.png" alt="imagem" class="imagem"/>
+  <ion-item>
+    <ion-label position="stacked">Cidade</ion-label>
+    <ion-input [(ngModel)]="city" placeholder="Digite o nome da cidade"></ion-input>
+  </ion-item>
+  <ion-button [routerLink]="['/about']">Sobre</ion-button>
+  <ion-button [routerLink]="['/contact']">Contato</ion-button>
+  <ion-button (click)="getWeather()">Obter Clima</ion-button>
+
+  <ion-card *ngIf="weatherData">
+    <ion-card-header>
+      <ion-card-title>{{ weatherData.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Temperatura: {{ weatherData.main.temp }}°C</p>
+      <p>Condição: {{ weatherData.weather[0].description }}</p>
+      <p>Umidade: {{ weatherData.main.humidity }}%</p>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>
